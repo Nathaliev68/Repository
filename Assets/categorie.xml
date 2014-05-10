@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <Categorie ID="0" Name="Alle groepen…"/>
+  <Categorie ID="1" Name="Antiek en Kunst"/>
+  <Categorie ID="31" Name="Audio, Tv en Foto"/>
+  <Categorie ID="91" Name="Auto's"/>
+  <Categorie ID="2600" Name="Auto-onderdelen"/>
+  <Categorie ID="48" Name="Auto diversen"/>
+  <Categorie ID="201" Name="Boeken"/>
+  <Categorie ID="289" Name="Caravans en Kamperen"/>
+  <Categorie ID="1744" Name="Cd's en Dvd's"/>
+  <Categorie ID="322" Name="Computers en Software"/>
+  <Categorie ID="378" Name="Contacten en Berichten"/>
+  <Categorie ID="1098" Name="Diensten en Vakmensen"/>
+  <Categorie ID="395" Name="Dieren en Toebehoren"/>
+  <Categorie ID="239" Name="Doe-het-zelf en Verbouw"/>
+  <Categorie ID="445" Name="Fietsen en Brommers"/>
+  <Categorie ID="1099" Name="Hobby en Vrije tijd"/>
+  <Categorie ID="504" Name="Huis en Inrichting"/>
+  <Categorie ID="1032" Name="Huizen en Kamers"/>
+  <Categorie ID="565" Name="Kinderen en Baby's"/>
+  <Categorie ID="621" Name="Kleding|Dames"/>
+  <Categorie ID="1776" Name="Kleding|Heren"/>
+  <Categorie ID="678" Name="Motoren"/>
+  <Categorie ID="728" Name="Muziek en Instrumenten"/>
+  <Categorie ID="1784" Name="Postzegels en Munten"/>
+  <Categorie ID="1826" Name="Sieraden, Tassen en Uiterlijk"/>
+  <Categorie ID="356" Name="Spelcomputers en Games"/>
+  <Categorie ID="784" Name="Sport en Fitness"/>
+  <Categorie ID="820" Name="Telecommunicatie"/>
+  <Categorie ID="1984" Name="Tickets en Kaartjes"/>
+  <Categorie ID="1847" Name="Tuin en Terras"/>
+  <Categorie ID="167" Name="Vacatures"/>
+  <Categorie ID="856" Name="Vakantie"/>
+  <Categorie ID="895" Name="Verzamelen"/>
+  <Categorie ID="976" Name="Watersport en Boten"/>
+  <Categorie ID="537" Name="Witgoed en Apparatuur"/>
+  <Categorie ID="1085" Name="Zakelijke goederen"/>
+  
+  
+</root>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="7775f857-ecdf-47d7-9de5-5d69b4e04475" Publisher="CN=nathalie" Version="1.1.0.0" />
+  <Properties>
+    <DisplayName>MarktplaatsZoeker</DisplayName>
+    <PublisherDisplayName>nathalie</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="MarktplaatsZoeker.App">
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="BackGroundUpdater.BackGroundRunner">
+          <BackgroundTasks>
+            <Task Type="timer" />
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
+      <m2:VisualElements DisplayName="MarktplaatsZoeker" Description="MarktplaatsZoeker" BackgroundColor="#464646" ForegroundText="light" ToastCapable="true" Square150x150Logo="marktplaats.png" Square30x30Logo="Assets\SmallLogo.png">
+        <m2:DefaultTile>
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:LockScreen Notification="badge" BadgeLogo="Assets\badge.png" />
+        <m2:SplashScreen BackgroundColor="#464646" Image="Assets\marktplaats splash.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,138 @@
+#navigation {
+	padding: 20px 20px 30px; border: 1px solid rgb(177, 196, 223); border-image: none; width: 158px; margin-right: 20px; background-color: rgb(255, 248, 215);
+}
+#navigation .title {
+	font-size: 15px; font-weight: bold; margin-bottom: 15px; display: block;
+}
+#navigation .heading {
+	padding: 2px 12px; font-weight: bold; display: block;
+}
+#highlights {
+	margin: 0px 0px 20px -20px; padding: 0px 20px 10px; width: 158px; border-bottom-color: rgb(177, 196, 223); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#highlights > .title {
+	margin-bottom: 20px;
+}
+.highlight-link {
+	height: 25px; line-height: 25px; margin-bottom: 20px; display: block;
+}
+.highlight-two-line-link {
+	margin-bottom: 30px;
+}
+.highlight-link:hover {
+	text-decoration: none; cursor: pointer;
+}
+.highlight-link:hover .highlight-title {
+	text-decoration: underline;
+}
+.highlight-link:active .highlight-image {
+	top: 1px; position: relative;
+}
+.highlight-image {
+	margin-right: 10px; float: left;
+}
+.highlight-title {
+	line-height: 10px; font-weight: bold; margin-bottom: 5px; display: block;
+}
+.highlight-text {
+	color: rgb(51, 51, 51); line-height: 10px; display: block;
+}
+.highlight-title-and-text-container {
+	padding-left: 40px;
+}
+.highlight-title-and-text-container .highlight-text {
+	line-height: 14px;
+}
+#fixed-groups {
+	width: 760px; float: left;
+}
+.fixed-group {
+	padding-bottom: 15px; margin-top: 17px; border-bottom-color: rgb(177, 196, 223); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#fixed-groups > .title {
+	margin-top: 20px; margin-bottom: 8px;
+}
+#fixed-groups > .title a {
+	color: rgb(51, 51, 51);
+}
+#fixed-groups > .title > label {
+	padding-right: 10px; font-size: 15px; font-weight: bold; margin-right: 10px; border-right-color: rgb(51, 51, 51); border-right-width: 0px; border-right-style: solid; display: inline-block;
+}
+.fixed-group-item {
+	width: 175px; float: left; position: relative;
+}
+.fixed-group-item:hover {
+	padding: 3px; border: 1px solid rgb(177, 196, 223); border-image: none; left: -4px; top: -4px; margin-right: -8px; margin-bottom: -8px; margin-left: -8px;
+}
+.fixed-group-item:hover strong {
+	text-decoration: underline;
+}
+.fixed-group-item + .fixed-group-item {
+	margin-left: 20px;
+}
+:first-child.fixed-group-item:hover {
+	left: 4px; margin-right: 0px;
+}
+.fixed-group-item-highlight {
+	background: url("/aurora/res/images/blank.gif"); border: 1px solid rgb(255, 255, 255); border-image: none; left: -3px; top: -3px; width: 179px; height: 218px; position: absolute; z-index: 1000;
+}
+.fixed-group-item-highlight:hover {
+	border: 1px solid rgb(177, 196, 223); border-image: none; text-decoration: none;
+}
+.fixed-group-item:hover {
+	text-decoration: none;
+}
+.fixed-group-item .image {
+	border: 1px solid rgb(255, 255, 255); border-image: none; width: 173px; height: 138px; text-align: center; line-height: 134px; overflow: hidden; margin-bottom: 8px; display: inline-block; white-space: nowrap;
+}
+.fixed-group-item img {
+	vertical-align: middle; max-height: 138px; max-width: 173px;
+}
+.fixed-group-item strong {
+	margin: 0px 0px 5px 1px; overflow: hidden; display: block; white-space: nowrap; -ms-text-overflow: ellipsis; max-width: 175px;
+}
+.fixed-group-item .price {
+	margin: 0px 0px 7px 1px; color: rgb(51, 51, 51); display: block;
+}
+.fixed-group-item .info {
+	color: rgb(161, 161, 161); font-size: 11px; margin-left: 1px;
+}
+.priority-product {
+	width: 100%; text-align: right; color: rgb(0, 153, 0); font-size: 11px; font-weight: normal;
+}
+#banner-top {
+	margin: 20px auto; width: 980px; text-align: center;
+}
+#banner-top > div {
+	margin: 0px auto !important;
+}
+#top-banner-alt-position-wrapper {
+	float: right;
+}
+#banner-aanbieding {
+	width: 440px; height: 250px; float: left;
+}
+#banner-marketing {
+	width: 300px; height: 250px; margin-left: 20px; float: left;
+}
+.banner-loading {
+	background: url("/aurora/res/images/sprites/spinner.gif") no-repeat center rgb(255, 251, 231);
+}
+#sponsored-links {
+	padding-top: 20px;
+}
+#map-link {
+	padding-top: 20px; clear: both;
+}
+#map-link h3 {
+	font-size: 12px; font-weight: bold; margin-bottom: 15px;
+}
+#map-link img {
+	padding: 5px;
+}
+#map-link img:hover {
+	padding: 4px; border: 1px solid rgb(177, 196, 223); border-image: none; cursor: pointer;
+}
+.outlet-group-sub-heading {
+	margin-top: 17px; float: right;
+}
