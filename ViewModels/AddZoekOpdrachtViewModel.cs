@@ -1,5 +1,6 @@
 ﻿using ClassLibrary;
 using MarktplaatsZoeker.Common;
+using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,12 +12,14 @@ using System.Xml.Linq;
 
 namespace MarktplaatsZoeker.ViewModels
 {
-    public class AddZoekOpdrachtViewModel : INotifyPropertyChanged
+    public class ZoekOpdrachtViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public RelayCommand AddZoekOpdrachtToLocalSettingsCommand { get; set; }
 
-      
+        private MobileServiceClient MarktplaatsZoekerClient = new MobileServiceClient(
+       "https://marktplaatszoeker.azure-mobile.net/", "BfnHFNOyKXeVwCONycpGGbybTjJBeq74");
+
         private string _title;
         private string _zoekterm;
         private ObservableCollection<Categorie> _myList;
@@ -25,19 +28,31 @@ namespace MarktplaatsZoeker.ViewModels
         public string Id { get; set; }
 
 
-        public AddZoekOpdrachtViewModel()
+        public ZoekOpdrachtViewModel()
         {
             AddZoekOpdrachtToLocalSettingsCommand = new RelayCommand(AddZoekOpdrachtToLocalSettings);
-           
         }
-        private void AddZoekOpdrachtToLocalSettings(object itemText)
-        {
-            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            var container = localSettings.CreateContainer("ZoekOpdrachten", Windows.Storage.ApplicationDataCreateDisposition.Always);
 
-            localSettings.Containers["ZoekOpdrachten"].Values[Title] = string.Format("http://kopen.marktplaats.nl/opensearch.php?s=100&q={0}&g={1}", Zoekterm, MySelectedValue.Id);
+        private async void AddZoekOpdrachtToLocalSettings(object itemText)
+        {
+            //var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+            //var container = localSettings.CreateContainer("ZoekOpdrachten", Windows.Storage.ApplicationDataCreateDisposition.Always);
+
+            //localSettings.Containers["ZoekOpdrachten"].Values[Title] = string.Format("http://kopen.marktplaats.nl/opensearch.php?s=100&q={0}&g={1}", Zoekterm, MySelectedValue.Id);
+
+            //MobileServiceCollection<ZoekOpdracht, ZoekOpdracht> items;
+            //IMobileServiceTable<ZoekOpdracht> zoekOpdrachten = MarktplaatsZoekerClient.GetTable<ZoekOpdracht>();
+            //items = await zoekOpdrachten.ToCollectionAsync();
+            //var zoekOpdracht = new ZoekOpdracht()
+            //{
+            //    Link = new Uri(string.Format("http://kopen.marktplaats.nl/opensearch.php?s=100&q={0}&g={1}", Zoekterm, MySelectedValue.Id)),
+            //    Title = Zoekterm
+            //};
+
+            //await zoekOpdrachten.InsertAsync(zoekOpdracht);
+
         }
-    
+
         public Categorie MySelectedValue
         {
             get { return _selectedValue; }
@@ -95,14 +110,14 @@ namespace MarktplaatsZoeker.ViewModels
                 {
                     _myList = new ObservableCollection<Categorie>();
                     XDocument xdoc = XDocument.Load("../AppX/Assets/categorie.xml");
-                    IEnumerable<Categorie> categories = from cat in xdoc.Descendants("Categorie") 
+                    IEnumerable<Categorie> categories = from cat in xdoc.Descendants("Categorie")
                                                         select new Categorie(cat.Attributes("ID").First().Value, cat.Attributes("Name").First().Value);
                     foreach (Categorie cat in categories)
                     {
                         _myList.Add(cat);
                     }
                 }
-              return _myList;
+                return _myList;
             }
             set
             {

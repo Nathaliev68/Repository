@@ -26,9 +26,7 @@ namespace MarktplaatsZoeker
     /// </summary>
     public sealed partial class StartPage : MarktplaatsZoeker.Common.LayoutAwarePage
     {
-       private MobileServiceCollection<ZoekOpdracht, ZoekOpdracht> items;
-       private IMobileServiceTable<ZoekOpdracht> zoekOpdrachten = App.MarktplaatsZoekerClient.GetTable<ZoekOpdracht>();
-        //
+     
         public StartPage()
         {
             this.InitializeComponent();

@@ -25,7 +25,7 @@ namespace MarktplaatsZoeker
         public AddZoekOpdracht()
         {
             this.InitializeComponent();
-            this.DataContext= new AddZoekOpdrachtViewModel();
+            this.DataContext= new ZoekOpdrachtViewModel();
         }
 
         /// <summary>

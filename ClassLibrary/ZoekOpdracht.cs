@@ -12,6 +12,9 @@ namespace MarktplaatsZoeker
     {
        public Uri Link { get; set; }
        public string Title { get; set; }
+
+       public int ID { get; set; }
+
     }
    public class ZoekOpdrachten
    {
