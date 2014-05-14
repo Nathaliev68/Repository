@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Newtonsoft.Json;
+
 
 namespace MarktplaatsZoeker.ViewModels
 {
@@ -35,22 +37,15 @@ namespace MarktplaatsZoeker.ViewModels
 
         private async void AddZoekOpdrachtToLocalSettings(object itemText)
         {
-            //var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            //var container = localSettings.CreateContainer("ZoekOpdrachten", Windows.Storage.ApplicationDataCreateDisposition.Always);
-
-            //localSettings.Containers["ZoekOpdrachten"].Values[Title] = string.Format("http://kopen.marktplaats.nl/opensearch.php?s=100&q={0}&g={1}", Zoekterm, MySelectedValue.Id);
-
-            //MobileServiceCollection<ZoekOpdracht, ZoekOpdracht> items;
-            //IMobileServiceTable<ZoekOpdracht> zoekOpdrachten = MarktplaatsZoekerClient.GetTable<ZoekOpdracht>();
+            MobileServiceCollection<ZoekOpdracht, ZoekOpdracht> items;
+            IMobileServiceTable<ZoekOpdracht> zoekOpdrachten = MarktplaatsZoekerClient.GetTable<ZoekOpdracht>();
             //items = await zoekOpdrachten.ToCollectionAsync();
-            //var zoekOpdracht = new ZoekOpdracht()
-            //{
-            //    Link = new Uri(string.Format("http://kopen.marktplaats.nl/opensearch.php?s=100&q={0}&g={1}", Zoekterm, MySelectedValue.Id)),
-            //    Title = Zoekterm
-            //};
-
-            //await zoekOpdrachten.InsertAsync(zoekOpdracht);
-
+            var zoekOpdracht = new ZoekOpdracht()
+            {
+                Link = string.Format("http://kopen.marktplaats.nl/opensearch.php?s=100&q={0}&g={1}", Zoekterm, MySelectedValue.Id),
+                Title = Zoekterm
+            };
+            await zoekOpdrachten.InsertAsync(zoekOpdracht);
         }
 
         public Categorie MySelectedValue

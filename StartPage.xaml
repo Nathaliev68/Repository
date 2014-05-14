@@ -51,7 +51,8 @@
         </Grid>
 
         <ListView Name="AdvListView" HorizontalAlignment="Left" Height="550" Margin="182,20,0,0" Grid.Row="2" VerticalAlignment="Top" Width="200" 
-                  ItemsSource="{Binding Path=ZoekOpdrachten}" IsItemClickEnabled="True" >
+                  IsItemClickEnabled="True" >
+            <!--ItemsSource="{Binding Path=GetZoekOpdrachten}" wordt er nu in pageload aangehangen-->
             <Border Background="Azure" Width="60" Height="60">
             </Border>
             <interactivity:Interaction.Behaviors>
@@ -67,7 +68,6 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}" TextWrapping="Wrap" IsHitTestVisible="False">
- 
                     </TextBlock>
                 </DataTemplate>
             </ListView.ItemTemplate>

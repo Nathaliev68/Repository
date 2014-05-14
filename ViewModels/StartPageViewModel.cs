@@ -1,4 +1,5 @@
 ﻿using MarktplaatsZoeker.Common;
+using Microsoft.WindowsAzure.MobileServices;
 using MvvmLightApp.Common;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,10 @@ namespace MarktplaatsZoeker.ViewModels
         private List<ZoekOpdracht> _myList;
         private string menuText;
         private string key;
-       
+
+        private MobileServiceClient MarktplaatsZoekerClient = new MobileServiceClient(
+       "https://marktplaatszoeker.azure-mobile.net/", "BfnHFNOyKXeVwCONycpGGbybTjJBeq74");
+
 
         public StartPageViewModel()
         {
@@ -74,7 +78,6 @@ namespace MarktplaatsZoeker.ViewModels
         }
 
 
-
         private void ItemClicked(object obj)
         {
             ItemClickEventArgs e = (ItemClickEventArgs)obj;
@@ -85,7 +88,7 @@ namespace MarktplaatsZoeker.ViewModels
         {
             if (((SelectionChangedEventArgs)obj).AddedItems.Count() > 0)
             {
-               key = ((ZoekOpdracht)((SelectionChangedEventArgs)obj).AddedItems[0]).Title;
+                key = ((ZoekOpdracht)((SelectionChangedEventArgs)obj).AddedItems[0]).Title;
             }
         }
         private async void Delete(object obj)
@@ -102,48 +105,29 @@ namespace MarktplaatsZoeker.ViewModels
             return new Rect(point, new Size(element.ActualWidth, element.ActualHeight));
         }
 
-        public List<ZoekOpdracht> ZoekOpdrachten
+        public async Task<List<ZoekOpdracht>> GetZoekOpdrachten()
         {
-            get
-            {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var container = localSettings.CreateContainer("ZoekOpdrachten", Windows.Storage.ApplicationDataCreateDisposition.Always);
-                _myList = new List<ZoekOpdracht>();
-                ZoekOpdracht zoek;
-
-                if (container == null || container.Values.Count() == 0)
-                {
-                    // AddZoekOpdrachtenToLocalSettings();
-                    return null;
-                }
-                else
-                {
-                    foreach (KeyValuePair<string, object> s in container.Values)
-                    {
-                        zoek = new ZoekOpdracht();
-                        zoek.Link = new Uri(s.Value.ToString());
-                        zoek.Title = s.Key;
-
-                        _myList.Add(zoek);
-                    };
-                    return _myList;
-                }
-            }
-            set
-            {
-                if (_myList != value)
-                {
-                    _myList = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("ZoekOpdrachten"));
-                    }
-                }
-            }
+            MobileServiceCollection<ZoekOpdracht, ZoekOpdracht> items;
+            IMobileServiceTable<ZoekOpdracht> zoekOpdrachten = MarktplaatsZoekerClient.GetTable<ZoekOpdracht>();
+            //IEnumerable<ZoekOpdracht> _myList;
+            var _myList = await zoekOpdrachten.ToEnumerableAsync();
+            return _myList.ToList();
+            //}
+            //set
+            //{
+            //    if (_myList != value)
+            //    {
+            //        _myList = value;
+            //        if (PropertyChanged != null)
+            //        {
+            //            PropertyChanged(this, new PropertyChangedEventArgs("ZoekOpdrachten"));
+            //        }
+            //    }
+            //}
         }
 
-        public string lastlogon 
-        { 
+        public string lastlogon
+        {
             get
             {
                 var appsettings = ApplicationData.Current.LocalSettings;

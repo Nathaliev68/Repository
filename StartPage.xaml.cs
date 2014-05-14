@@ -26,11 +26,18 @@ namespace MarktplaatsZoeker
     /// </summary>
     public sealed partial class StartPage : MarktplaatsZoeker.Common.LayoutAwarePage
     {
-     
         public StartPage()
         {
             this.InitializeComponent();
-            this.DataContext = new StartPageViewModel();
+            this.DataContext = new StartPageViewModel(); ;
+            FillGrid();
+        }
+
+        public async void FillGrid()
+        {
+            var vm = (StartPageViewModel)this.DataContext;
+            var list = await vm.GetZoekOpdrachten();
+            AdvListView.ItemsSource = list;
         }
 
         /// <summary>
@@ -44,7 +51,6 @@ namespace MarktplaatsZoeker
         /// session.  This will be null the first time a page is visited.</param>
         protected override void LoadState(Object navigationParameter, Dictionary<String, Object> pageState)
         {
- 
             var taskEntryPoint = "BackGroundUpdater.BackGroundRunner";
             var taskName = "BackGroundRunner";
             MaintenanceTrigger taskTrigger = new MaintenanceTrigger(15, false);

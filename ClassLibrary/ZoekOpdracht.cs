@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,10 +11,13 @@ namespace MarktplaatsZoeker
 {
    public class ZoekOpdracht
     {
-       public Uri Link { get; set; }
-       public string Title { get; set; }
+       public Guid Id { get; set; }
 
-       public int ID { get; set; }
+       [JsonProperty(PropertyName = "Link")]
+       public string Link { get; set; }
+         
+       [JsonProperty(PropertyName = "Title")]
+       public string Title { get; set; }
 
     }
    public class ZoekOpdrachten
