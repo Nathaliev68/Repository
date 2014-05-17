@@ -93,10 +93,11 @@ namespace MarktplaatsZoeker.ViewModels
         }
         private async void Delete(object obj)
         {
-            var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-            var container = localSettings.Containers["zoekOpdrachten"];
-            ((ApplicationDataContainerSettings)container.Values).Remove(key);
-
+            IMobileServiceTable<ZoekOpdracht> zoekOpdrachten = MarktplaatsZoekerClient.GetTable<ZoekOpdracht>();
+            var zoekOpdrachtenCol = await zoekOpdrachten.ToEnumerableAsync();
+            var zoekOpdracht = zoekOpdrachtenCol.First(z => z.Title == key);
+            await zoekOpdrachten.DeleteAsync(zoekOpdracht);
+            await GetZoekOpdrachten();
         }
         public static Rect GetElementRect(FrameworkElement element)
         {
@@ -107,9 +108,8 @@ namespace MarktplaatsZoeker.ViewModels
 
         public async Task<List<ZoekOpdracht>> GetZoekOpdrachten()
         {
-            MobileServiceCollection<ZoekOpdracht, ZoekOpdracht> items;
+            //MobileServiceCollection<ZoekOpdracht, ZoekOpdracht> items;
             IMobileServiceTable<ZoekOpdracht> zoekOpdrachten = MarktplaatsZoekerClient.GetTable<ZoekOpdracht>();
-            //IEnumerable<ZoekOpdracht> _myList;
             var _myList = await zoekOpdrachten.ToEnumerableAsync();
             return _myList.ToList();
             //}
